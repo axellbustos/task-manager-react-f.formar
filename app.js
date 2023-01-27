@@ -3,6 +3,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+const {connectDB} =require("./database/config")
 
 /* var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users'); */
@@ -12,7 +13,7 @@ const proyectRoutes = require("./routes/proyect")
 const taskRoutes = require("./routes/task")
 
 var app = express();
-
+connectDB()
 
 app.use(logger('dev'));
 app.use(express.json());
