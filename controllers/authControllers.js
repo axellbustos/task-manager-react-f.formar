@@ -1,5 +1,15 @@
 module.exports={
     userRegister:async(req, res)=>{
+
+        const {name, email, password}=req.body
+
+        if ([name, email, password].includes("")) {//si los campos incluyen datos vacios creo un error con su respectivo status
+            let error= new Error("Los campos no pueden estar vacios")
+            error.status= 400
+            throw error
+        }
+
+
         try {
             return res.status(201).json({
                 ok:true,

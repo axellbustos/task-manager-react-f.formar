@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter); */
 app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
-app.use("/api/proyect", proyectRoutes)
+app.use("/api/project", proyectRoutes)
 app.use("/api/task", taskRoutes)
 
 // catch 404 and forward to error handler
