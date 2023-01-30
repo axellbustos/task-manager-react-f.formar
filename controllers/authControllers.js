@@ -4,7 +4,7 @@ const sendMails=require("../helpers/sendMails")//-------utilizar----------
 const User = require('../database/models/User');
 const generateTokenRandom =require("../helpers/generateTokenRandom")
 const generateJsonWebToken =require("../helpers/generateJsonWebToken");
-const { confirmRegister } = require('../helpers/sendMails');
+const { confirmRegister, forgotPassword } = require('../helpers/sendMails');
 
 module.exports={
     userRegister:async(req, res)=>{
@@ -27,7 +27,7 @@ module.exports={
             const userStore= await user.save()
 
             //enviar email de confirmacion llamando la funcion y pasandole lo que necesita
-            confirmRegister({
+            await confirmRegister({
                 name: userStore.name,
                 email: userStore.email,
                 token: userStore.token
@@ -131,11 +131,15 @@ module.exports={
                 throw createError(400,"el email no se encuentra registrado")
             }
 
-
-            user.token =generateTokenRandom()
+            const token=generateTokenRandom()
+            user.token = token
             await user.save()
             //enviar email para reestablecer pass
-
+            await forgotPassword({
+                name: user.name,
+                email: user.email,
+                token: user.token
+            })
             return res.status(201).json({
                 ok:true,
                 msg:"key token sent"//cambiar mensaje
@@ -150,6 +154,20 @@ module.exports={
     },
     tokenVerify:async(req, res)=>{
         try {
+
+            const {token}=req.query
+            if(!token){
+                throw createError(400,"No hay token en la ruta")
+            }
+
+            let user = await User.findOne({
+                token
+            })
+            if(!user){
+                throw createError(400,"Token invalido")
+            }
+
+
             return res.status(201).json({
                 ok:true,
                 msg:"The token key has been successfully verified"
@@ -164,6 +182,21 @@ module.exports={
     },
     changePassword:async(req, res)=>{
         try {
+
+            const{token}=req.query
+            const{password}=req.body//post
+
+            if(!password){
+                throw createError(400,"La contraseña es obligatoria")
+            }
+
+            let user = await User.findOne({
+                token
+            })
+            user.password= password
+            user.token=""
+            await user.save()
+
             return res.status(201).json({
                 ok:true,
                 msg:"successfully changed password"
