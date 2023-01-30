@@ -1,8 +1,10 @@
 const createError = require('http-errors');
 const {errorResponse}=require("../helpers/errorResponse")//-------utilizar----------
+const sendMails=require("../helpers/sendMails")//-------utilizar----------
 const User = require('../database/models/User');
 const generateTokenRandom =require("../helpers/generateTokenRandom")
-const generateJsonWebToken =require("../helpers/generateJsonWebToken")
+const generateJsonWebToken =require("../helpers/generateJsonWebToken");
+const { confirmRegister } = require('../helpers/sendMails');
 
 module.exports={
     userRegister:async(req, res)=>{
@@ -18,13 +20,18 @@ module.exports={
             if (user) {
                 throw createError(400,"Este email ya se encuentra registrado, pruebe iniciar session o ingrese otro email")
             }
+            const token=generateTokenRandom()
     
             user = new User(req.body)
-            user.token =generateTokenRandom()
+            user.token = token
             const userStore= await user.save()
 
-            //enviar email de confirmacion
-
+            //enviar email de confirmacion llamando la funcion y pasandole lo que necesita
+            confirmRegister({
+                name: userStore.name,
+                email: userStore.email,
+                token: userStore.token
+            })
             return res.status(201).json({
                 ok:true,
                 msg:"User registration has been successful",
