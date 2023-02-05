@@ -15,7 +15,7 @@ function App() {
           <Route index element={<Home />}/>
           <Route path="login" element={<Login />}/>
           <Route path="register" element={<Register />}/>
-          <Route path="forgetPassword" element={< ForgetPassword/>}/>
+          <Route path="forget-password" element={< ForgetPassword/>}/>
           <Route path="resetPassword" element={< RecoverPassword/>}/>
           <Route path="confirm/:token" element={< ConfirmAccount/>}/>
           <Route path="*" element={<h1>404 Not Found</h1>}/>
