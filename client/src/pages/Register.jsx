@@ -50,15 +50,16 @@ export const Register = () => {
   }
   
   return (
-    <div>
-         <h1>Creá tu cuenta</h1>
+    <div className=''>
+         
          {
           alert.msg && <Alert {...alert}/>//si existe msg.alert mostra la alerta
          }
-      <form action="" onSubmit={handleSubmit} noValidate>
-        <div>
-            <label htmlFor="name">Nombre</label>
-            <input type="text" id="name" placeholder="Ingrese su Nombre" autoComplete='off' value={name} name="name" onChange={handleInputChange} />
+      <form action="" onSubmit={handleSubmit} noValidate className='form flex  flex-col items-center text-white h-60 p-10 my-20 '>
+      <h1 className='w-full text-sky-600 text-center text-3xl'>Registrate</h1>
+        <div >
+            <label htmlFor="name" className='w-full p-2'>Nombre</label>
+            <input className='input-form' type="text" id="name" placeholder="Ingrese su Nombre" autoComplete='off' value={name} name="name" onChange={handleInputChange} />
         </div>
         <div>
             <label htmlFor="email">Correo electronico</label>
@@ -72,11 +73,10 @@ export const Register = () => {
             <label htmlFor="password2">Confirme su contraseña</label>
             <input type="password" id="password2" placeholder="Ingrese su contraseña" value={password2} name="password2" onChange={handleInputChange}/>
         </div>
-        <button type="submit" >Crear cuenta</button>
+        <button type="submit" className='button-submit'>Crear cuenta</button>
+        <Link to={'/login'}>Estas registrado? Inicia sesion</Link>
       </form>
-      <nav>
-        <Link to={'/'}>Estas registrado? Inicia sesion</Link>
-      </nav>
+      
     </div>
   )
 }

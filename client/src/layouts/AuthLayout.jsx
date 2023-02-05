@@ -8,7 +8,7 @@ export const AuthLayout = () => {
           <header>
             <Header/>
           </header>
-          <main className="flex justify-center align-middle">
+          <main className="flex justify-center align-middle ">
             <Outlet/>
           </main>
             
