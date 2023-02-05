@@ -50,16 +50,13 @@ export const Register = () => {
   }
   
   return (
-    <div className=''>
-         
-         {
-          alert.msg && <Alert {...alert}/>//si existe msg.alert mostra la alerta
-         }
+    <div >
+         {alert.msg && <Alert {...alert}/>}//si existe msg.alert mostra la alerta
       <form action="" onSubmit={handleSubmit} noValidate className='form flex  flex-col items-center text-white h-60 p-10 my-20 '>
       <h1 className='w-full text-sky-600 text-center text-3xl'>Registrate</h1>
         <div >
-            <label htmlFor="name" className='w-full p-2'>Nombre</label>
-            <input className='input-form' type="text" id="name" placeholder="Ingrese su Nombre" autoComplete='off' value={name} name="name" onChange={handleInputChange} />
+            <label htmlFor="name">Nombre</label>
+            <input type="text" id="name" placeholder="Ingrese su Nombre" autoComplete='off' value={name} name="name" onChange={handleInputChange} />
         </div>
         <div>
             <label htmlFor="email">Correo electronico</label>
