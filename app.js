@@ -4,6 +4,17 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 const {connectDB} =require("./database/config")
+const cors=require('cors')//config cors clase
+const whiteList=[process.env.URL_FRONT, process.env.URL_FRONT_REMOTE]
+const corsOptions={
+  origin: function (origin, cb) {
+    if (whiteList.includes(origin)) {
+      cb(null,true)
+    }else{
+      cb(new Error('Error de cors'))
+    }
+  }                                                                 
+}
 
 /* var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users'); */
@@ -19,6 +30,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors(corsOptions))
+
 
 //RUTAS
 /* app.use('/', indexRouter);

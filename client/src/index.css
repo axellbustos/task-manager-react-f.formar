@@ -3,3 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(2, 132, 199);
+    border-radius: 50%;
+    margin: 25px;
+}
