@@ -29,7 +29,7 @@ module.exports={
             to: email,//para quien
             subject:"reestablece tu contraseña",//asunto
             text:"reestablesca su contraseña",//texto del mail
-            html:`<p>hola ${name} has click en el enlace para recuperar tu contraseña <a href="${process.env.URL_FRONT}/confirm/${token}">${process.env.URL_FRONT}/resetPassword/${token}</a> </p>`
+            html:`<p>hola ${name} has click en el enlace para recuperar tu contraseña <a href="${process.env.URL_FRONT}/resetPassword/${token}">${process.env.URL_FRONT}/resetPassword/${token}</a> </p>`
         })
     }
 }
