@@ -193,6 +193,11 @@ module.exports={
             let user = await User.findOne({
                 token
             })
+
+            if(!user){
+                throw createError(400,"Token invalido")
+            }
+            
             user.password= password
             user.token=""
             await user.save()
