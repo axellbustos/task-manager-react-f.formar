@@ -17,7 +17,7 @@ module.exports={
             to: email,//para quien
             subject:"verifica tu cuenta",//asunto
             text:"confirme su cuenta",//texto del mail
-            html:`<p>hola ${name} has click en el enlace para activar tu cuenta <a href="${process.env.URL_FRONT}/confirm/${token}">${process.env.URL_FRONT}/confirm/${token}</a> </p>`
+            html:`<p>Hola ${name} has click en el enlace para activar tu cuenta <a href="${process.env.URL_FRONT}/confirm/${token}">${process.env.URL_FRONT}/confirm/${token}</a> </p>`
         })
     },
     forgotPassword: async (data)=>{
