@@ -6,10 +6,13 @@ import { ForgetPassword } from "./pages/ForgetPassword";
 import { RecoverPassword } from "./pages/RecoverPassword";
 import { ConfirmAccount } from "./pages/ConfirmAccount";
 import { Home } from "./pages/Home";
-
+import  {AuthProvider}  from "./context/authProvider"
 function App() {
   return (
     <BrowserRouter>
+    <AuthProvider>
+      
+    
       <Routes>
         <Route path="/" element={<AuthLayout/>}>
           <Route index element={<Home />}/>
@@ -21,6 +24,7 @@ function App() {
           <Route path="*" element={<h1>404 Not Found</h1>}/>
         </Route>
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

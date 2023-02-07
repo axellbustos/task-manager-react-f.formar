@@ -27,7 +27,7 @@ export const Header = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse> */}
-        <Navbar.Brand href="#home" className="text-white">Things To Do</Navbar.Brand>
+        <Navbar.Brand href="/" className="text-white">Things To Do</Navbar.Brand>
       </Container>
     </Navbar>
   )

@@ -3,7 +3,7 @@ const {errorResponse}=require("../helpers/errorResponse")//-------utilizar------
 const sendMails=require("../helpers/sendMails")//-------utilizar----------
 const User = require('../database/models/User');
 const generateTokenRandom =require("../helpers/generateTokenRandom")
-const generateJsonWebToken =require("../helpers/generateJsonWebToken");
+const generateJWT =require("../helpers/generateJWT");
 const { confirmRegister, forgotPassword } = require('../helpers/sendMails');
 
 module.exports={
@@ -65,7 +65,7 @@ module.exports={
             }
 
             if (!await user.checkedPassword(password)) {
-                throw createError(403,"Credenciales invalidas")
+                throw createError(403,"Los datos que ingresaste son incorrectos, intentá nuevamente")
             }
 
             return res.status(201).json({
@@ -73,9 +73,9 @@ module.exports={
                 msg:"User login has been successful",
                 user:{
                     nombre:user.name,
-                    email: user.email,
-                    token:generateJsonWebToken({id:user._id})//revisar
-                }
+                    _id: user._id
+                },
+                token: generateJWT({id:user._id})
             })
         } catch (error) {
             console.log(error);
@@ -197,7 +197,7 @@ module.exports={
             if(!user){
                 throw createError(400,"Token invalido")
             }
-            
+
             user.password= password
             user.token=""
             await user.save()
