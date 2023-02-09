@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import useAuth from "../hooks/useAuth";
 
 export const ProtectedLayout = () => {
-  const { auth, loading } = useAuth;
+  const { auth, loading } = useAuth();
   {
     if (loading) {
       return <p className="text-white">Cargando...</p>

@@ -25,12 +25,13 @@ const AuthProvider = ({children}) => {
         }
 
         try {
-            const{data}=await clientAxios.get('/user/profile', config)//trae los datos del login{ok,msg,user}
-            
+            const {data}=await clientAxios.get('/user/profile', config)//trae los datos del login{ok,msg,user}
+           
             setAuth(data.user)//y los setea en auth
         } catch (error) {
             console.error(error)
             sessionStorage.removeItem("token")
+            
             
         } finally{// <= investigar esta cosa, parece que se ejecuta en cualquiera de los 2 casos
             setLoading(false)
