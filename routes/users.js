@@ -4,6 +4,6 @@ const { userProfile }=require("../controllers/userControllers");
 const checkToken = require('../middlewares/checkToken');
 
 /* GET home page. */
-router.post('/profile', checkToken, userProfile );
+router.get('/profile', checkToken, userProfile );
 
 module.exports = router;

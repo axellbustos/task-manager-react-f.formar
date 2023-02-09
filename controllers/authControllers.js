@@ -72,7 +72,7 @@ module.exports={
                 ok:true,
                 msg:"User login has been successful",
                 user:{
-                    nombre:user.name,
+                    name:user.name,
                     _id: user._id
                 },
                 token: generateJWT({id:user._id})

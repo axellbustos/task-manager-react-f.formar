@@ -11,9 +11,9 @@ module.exports = async (req,res,next)=>{
         }
         const token=req.headers.authorization
         const decode= verify(token, process.env.JWT_SECRET)
-
+        
         req.user = await User.findById(decode.id).select("-password -checked -token -createdAt -updatedAt -__v")// - para que no traiga y ej name , email para que solo traiga esos
-
+        
         next()
 
     } catch (error) {
