@@ -21,7 +21,8 @@ var usersRouter = require('./routes/users'); */
 const authRoutes = require("./routes/auth")
 const userRoutes = require("./routes/users")
 const proyectRoutes = require("./routes/proyect")
-const taskRoutes = require("./routes/task")
+const taskRoutes = require("./routes/task");
+const checkToken = require("./middlewares/checkToken");
 
 var app = express();
 connectDB()
@@ -38,7 +39,7 @@ app.use(cors())//corsOptions
 app.use('/users', usersRouter); */
 app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
-app.use("/api/project", proyectRoutes)
+app.use("/api/project",checkToken, proyectRoutes)
 app.use("/api/task", taskRoutes)
 
 // catch 404 and forward to error handler

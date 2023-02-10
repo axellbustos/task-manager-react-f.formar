@@ -1,9 +1,15 @@
+const createError = require('http-errors');
+const Proyect = require('../database/models/Proyect');
+const Project = require("../database/models/Proyect")
 module.exports = {
     projectList:async(req, res)=>{
         try {
+            const project = await Project.find().where('createdBy').equals(req.user)
+
             return res.status(201).json({
                 ok:true,
-                msg:"Project list"
+                msg:"Project list",
+                project
             })
         } catch (error) {
             console.log(error);
@@ -15,9 +21,22 @@ module.exports = {
     },
     projectStore : async(req, res)=>{
         try {
+            const {name, description, client} = req.body;
+
+            if ([name, description, client].includes("") || !name || !description || !client) {
+                throw createError(400,"Los campos no pueden estar vacios")
+            }
+            if (!req.user) {
+                throw createError(400,"Usuario no encontrado")
+            }
+            const project = new Project(req.body)
+            project.createBy=req.user._id
+            const projectStore = await project.save()
+
             return res.status(201).json({
                 ok:true,
-                msg:"the project has been saved"
+                msg:"the project has been saved",
+                projectStore
             })
         } catch (error) {
             console.log(error);
