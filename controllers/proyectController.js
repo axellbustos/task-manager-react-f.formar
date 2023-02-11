@@ -116,6 +116,25 @@ module.exports = {
     },
     projectRemove: async(req, res)=>{
         try {
+
+            const {id}= req.params
+            const {name, description, client, dataExpire} = req.body;
+
+            if (!ObjectId.isValid(id)) {
+                throw createError("No es un ID valido")
+            }
+
+            const project = await Project.findById(id)
+
+            if (!project) {
+                throw createError("El projecto no fue encontrado")
+            }
+            if (req.user._id.toString() !== project.createBy.toString()) {
+                throw createError("No tienes permiso para acceder a este proyecto")
+            }
+
+            await project.deleteOne()
+
             return res.status(201).json({
                 ok:true,
                 msg:"the project has been successfully delete"
