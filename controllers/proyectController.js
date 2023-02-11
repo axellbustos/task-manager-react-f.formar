@@ -4,7 +4,7 @@ const ObjectId = require("mongoose").Types.ObjectId
 module.exports = {
     projectList:async(req, res)=>{
         try {
-            const project = await Project.find().where('createdBy').equals(req.user)
+            const project = await Project.find().where('createBy').equals(req.user)
 
             return res.status(201).json({
                 ok:true,
@@ -78,9 +78,33 @@ module.exports = {
     },
     projectUpdate:async(req, res)=>{
         try {
+            const {id}= req.params
+            const {name, description, client, dataExpire} = req.body;
+
+            if (!ObjectId.isValid(id)) {
+                throw createError("No es un ID valido")
+            }
+
+            const project = await Project.findById(id)
+
+            if (!project) {
+                throw createError("El projecto no fue encontrado")
+            }
+            if (req.user._id.toString() !== project.createBy.toString()) {
+                throw createError("No tienes permiso para acceder a este proyecto")
+            }
+
+            project.name = name || project.name
+            project.description = description || project.description
+            project.client = client || project.client
+            project.dataExpire = dataExpire || project.dataExpire
+            
+            const projectUpdate = await project.save()
+
             return res.status(201).json({
                 ok:true,
-                msg:"the project has been successfully updated"
+                msg:"the project has been successfully updated",
+                projectUpdate
             })
         } catch (error) {
             console.log(error);
