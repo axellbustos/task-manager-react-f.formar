@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { Header } from "../components/Header";
+import { SideBar } from "../components/SideBar";
 import useAuth from "../hooks/useAuth";
 
 export const ProtectedLayout = () => {
@@ -18,9 +19,13 @@ export const ProtectedLayout = () => {
           <header>
             <Header />
           </header>
-          <main className="flex justify-center align-middle ">
+          <div>
+            <SideBar/>
+            <main className="flex justify-center align-middle ">
             <Outlet />
           </main>
+          </div>
+          
         </div>
       ):(
         <Navigate to="/login" />

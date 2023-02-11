@@ -9,6 +9,9 @@ import { Home } from "./pages/Home";
 import  {AuthProvider}  from "./context/authProvider"
 import { ProtectedLayout } from "./layouts/PotectedLayout";
 import { Projects } from "./pages/Projects";
+import { ProjectAdd } from "./pages/ProjectAdd";
+import { Project } from "./pages/Project";
+import { ProjectEdit } from "./pages/ProjectEdit";
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         </Route>
         <Route path="/projects" element={<ProtectedLayout/>}>
           <Route index element={<Projects />}/>
+          <Route path="createProject" element={<ProjectAdd/>}/>
+          <Route path="editProject/:id" element={<ProjectEdit/>}/>
+          <Route path=":id" element={<Project />}/>
           <Route path="*" element={<h1>404 Not Found</h1>}/>
         </Route>
       </Routes>
