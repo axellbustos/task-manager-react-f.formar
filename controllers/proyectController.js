@@ -1,6 +1,6 @@
 const createError = require('http-errors');
-const Proyect = require('../database/models/Proyect');
 const Project = require("../database/models/Proyect")
+const ObjectId = require("mongoose").Types.ObjectId
 module.exports = {
     projectList:async(req, res)=>{
         try {
@@ -48,15 +48,31 @@ module.exports = {
     },
     projectDetail:async(req, res)=>{
         try {
+            const {id}= req.params
+
+            if (!ObjectId.isValid(id)) {
+                throw createError("No es un ID valido")
+            }
+
+            const project = await Project.findById(id)
+
+            if (!project) {
+                throw createError("El projecto no fue encontrado")
+            }
+            if (req.user._id.toString() !== project.createBy.toString()) {
+                throw createError("No tienes permiso para acceder a este proyecto")
+            }
+
             return res.status(201).json({
                 ok:true,
-                msg:"proyect detail"
+                msg:"Project detail.",
+                project
             })
         } catch (error) {
             console.log(error);
             return res.status(error.status || 500).json({
                 ok:false,
-                msg: error.message || "a problem has occurred with the project detail, contact administrator"
+                msg: error.message || "A problem has occurred with the project detail, contact administrator."
             })
         }
     },
