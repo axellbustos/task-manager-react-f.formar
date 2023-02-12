@@ -2,8 +2,8 @@ import React from 'react'
 
 export const Task = () => {
   return (
-    <div>
-      <div>
+    <div className='text-white'>
+      <div >
         <p>Nombre de la tarea</p>
         <p>Descripcion de la tarea</p>
         <p>Fecha de entraga</p>

@@ -42,7 +42,6 @@ export const Login = () => {
       
       setAuth(data.user)
       sessionStorage.setItem('token',data.token)
-
     } catch (error) {
       console.error(error); //.error()sale el error en rojo, ta' piola
       handleShowAlert(error.response.data.msg)

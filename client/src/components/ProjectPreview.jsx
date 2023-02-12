@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export const ProjectPreview = () => {
+export const ProjectPreview = ({name,_id, client}) => {
   return (
     <div>
-        <p>Nombre del proyecto <span>| Client</span></p>
-        <Link>Ver proyecto</Link>
+        <p>{name} <span>| {client}</span></p>
+        <Link to={`/projects/${_id}`}>Ver proyecto</Link>
     </div>
   )
 }

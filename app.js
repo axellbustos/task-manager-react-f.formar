@@ -39,7 +39,7 @@ app.use(cors())//corsOptions
 app.use('/users', usersRouter); */
 app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
-app.use("/api/project",checkToken, proyectRoutes)
+app.use("/api/projects",checkToken, proyectRoutes)
 app.use("/api/task", taskRoutes)
 
 // catch 404 and forward to error handler

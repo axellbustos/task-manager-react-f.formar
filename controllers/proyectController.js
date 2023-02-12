@@ -4,12 +4,12 @@ const ObjectId = require("mongoose").Types.ObjectId
 module.exports = {
     projectList:async(req, res)=>{
         try {
-            const project = await Project.find().where('createBy').equals(req.user)
+            const projects = await Project.find().where('createBy').equals(req.user)
 
             return res.status(201).json({
                 ok:true,
                 msg:"Project list",
-                project
+                projects
             })
         } catch (error) {
             console.log(error);
