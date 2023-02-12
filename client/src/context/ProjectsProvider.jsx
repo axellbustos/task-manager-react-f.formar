@@ -92,15 +92,34 @@ const Toast = Swal.mixin({
                     Authorization : token
                 }
             }
+            if (project.id) {
+                const {data}=await clientAxios.put(`/projects/${project.id}`, project, config)
+            console.log(data);
+            
+            const projectUpdated = projects.map(projectState =>{
+                if (projectState._id === data.projectUpdate._id) {
+                    return data.projectUpdate
+                }
+                return projectState
+            })
 
-            const {data}=await clientAxios.post(`/projects`, project, config)
+            setProjects(projectUpdated)
+
+            Toast.fire({
+                icon : 'success',
+                title : data.msg
+            });  
+            }else{
+             const {data}=await clientAxios.post(`/projects`, project, config)
             console.log(data);
             setProjects([...projects, data.project])
 
             Toast.fire({
                 icon : 'success',
                 title : data.msg
-            });
+            });   
+            }
+            
             navigate('/projects')
 
         } catch (error) {

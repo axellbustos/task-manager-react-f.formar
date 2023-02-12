@@ -79,7 +79,7 @@ module.exports = {
     projectUpdate:async(req, res)=>{
         try {
             const {id}= req.params
-            const {name, description, client, dataExpire} = req.body;
+            const {name, description, client, dateExpire} = req.body;
 
             if (!ObjectId.isValid(id)) {
                 throw createError("No es un ID valido")
@@ -97,7 +97,7 @@ module.exports = {
             project.name = name || project.name
             project.description = description || project.description
             project.client = client || project.client
-            project.dataExpire = dataExpire || project.dataExpire
+            project.dateExpire = dateExpire || project.dateExpire
             
             const projectUpdate = await project.save()
 
@@ -118,7 +118,7 @@ module.exports = {
         try {
 
             const {id}= req.params
-            const {name, description, client, dataExpire} = req.body;
+            const {name, description, client, dateExpire} = req.body;
 
             if (!ObjectId.isValid(id)) {
                 throw createError("No es un ID valido")

@@ -11,7 +11,7 @@ const projectSchema = new mongoose.Schema({//creamos el esquema y le pasamos las
         require: true,
         trim: true
     },
-    dataExpire: {
+    dateExpire: {
         type: Date,
         default: Date.now()
     },

@@ -8,7 +8,7 @@ router.route('/')//es como una ruta dentro de otra, se pasa la ruta compartida y
     .post(projectStore)
 router.route('/:id')
     .get(projectDetail)
-    .post(projectUpdate)
+    .put(projectUpdate)
     .delete(projectRemove)
 router
     .get('/partner/add', addPartner)

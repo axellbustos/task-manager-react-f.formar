@@ -7,7 +7,7 @@ import { useProjects } from "../hooks/useProjects";
 export const Project = () => {
   const { id } = useParams();
   const { loading, alert, getProject, project } = useProjects();
-  const { name, description, dateExpire, client } = project;
+  const { name, description, dateExpire, client, _id } = project;
 
   useEffect(() => {
     getProject(id);
@@ -21,7 +21,7 @@ export const Project = () => {
         <div className="text-white">
           <div>
             <h1>{name}</h1>
-            <Link to={`/project/editProject/:id`}>
+            <Link to={`/projects/editProject/${_id}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-list-details"
