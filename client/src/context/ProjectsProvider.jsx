@@ -127,8 +127,36 @@ const Toast = Swal.mixin({
             handleShowAlert(error.response ? error.response.data.msg : "error ...")
         }
     }
+    const deleteProject = async (id)=>{
+        try {
+            const token = sessionStorage.getItem('token')
+            if (!token) {
+                return null
+            }
+            const config  ={
+                headers: {
+                    "Content-Type":"application/json",
+                    Authorization : token
+                }
+            }
+            const {data}=await clientAxios.delete(`/projects/${id}`, config)
+
+            const projectFilter = projects.filter(project => project._id !== id)
+            setProjects(projectFilter)
+
+            Toast.fire({
+                icon : 'success',
+                title : data.msg
+            }); 
+            navigate('/projects')
+
+        } catch (error) {
+            console.error(error);
+            handleShowAlert(error.response ? error.response.data.msg : "error ...")
+        }
+    }
   return (
-    <ProjectsContext.Provider value={{loading, alert, handleShowAlert, projects, getProjects, project, getProject, storeProject}}>
+    <ProjectsContext.Provider value={{loading, alert, handleShowAlert, projects, getProjects, project, getProject, storeProject, deleteProject}}>
         {children}
     </ProjectsContext.Provider>
   )

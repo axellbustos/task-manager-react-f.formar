@@ -1,6 +1,26 @@
 import React from "react";
 import { FormProject } from "../components/FormProject";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useProjects } from "../hooks/useProjects";
+
 export const ProjectEdit = () => {
+  const { deleteProject } = useProjects();
+  const { id } = useParams();
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: '¿Estás seguro de eliminar el proyecto?',
+      showCancelButton: true,
+      confirmButtonColor : 'red',
+      confirmButtonText: 'Confirmar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteProject(id)
+      } 
+    })
+  };
+
   return (
     <>
       <div>
@@ -25,11 +45,7 @@ export const ProjectEdit = () => {
             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
             <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
           </svg>
-          <button
-          /* onClick={} */
-          >
-            Eliminar
-          </button>
+          <button className="text-white" onClick={handleDelete}>Eliminar</button>
         </div>
       </div>
       <div>
