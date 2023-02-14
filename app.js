@@ -5,7 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 const {connectDB} =require("./database/config")
 const cors=require('cors')//config cors clase
-const whiteList=[process.env.URL_FRONT, process.env.URL_FRONT_REMOTE]
+const whiteList=[process.env.URL_FRONT/* , process.env.URL_FRONT_REMOTE */]
 const corsOptions={
   origin: function (origin, cb) {
     if (whiteList.includes(origin)) {
