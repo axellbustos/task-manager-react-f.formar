@@ -4,9 +4,11 @@ import { Alert } from "../components/Alert";
 import { useForm } from "../hooks/useForm";
 import  useAuth  from "../hooks/useAuth";
 import { clientAxios } from '../config/clientAxios';
+import { useNavigate} from 'react-router-dom'
 
 export const Login = () => {
 
+  const navigate = useNavigate()
   const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}/;
   const{setAuth} = useAuth()
   const [alert, setAlert] = useState({});
@@ -42,6 +44,8 @@ export const Login = () => {
       
       setAuth(data.user)
       sessionStorage.setItem('token',data.token)
+      navigate('/')
+
     } catch (error) {
       console.error(error); //.error()sale el error en rojo, ta' piola
       handleShowAlert(error.response.data.msg)
@@ -52,7 +56,7 @@ export const Login = () => {
     <div>
       <form
         action=""
-        className="form flex  flex-col items-center text-white h-60 p-10 my-20 " onSubmit={handleSubmit}
+        className="form flex  flex-col items-center  h-60 p-10 my-20 " onSubmit={handleSubmit}
       >
         <h1 className="w-full text-sky-600 text-center text-3xl">
           Inicia Sesion

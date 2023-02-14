@@ -61,7 +61,7 @@ export const Register = () => {
   
   return (
     <div >
-      <form action="" onSubmit={handleSubmit} noValidate className='form flex  flex-col flex-wrap items-center text-white h-60 p-10 my-20 '>
+      <form action="" onSubmit={handleSubmit} noValidate className='form flex  flex-col flex-wrap items-center  h-60 p-10 my-20 '>
       <h1 className='w-full text-sky-600 text-center text-3xl'>Registrate</h1>
         <div>
             <label htmlFor="name">Nombre</label>

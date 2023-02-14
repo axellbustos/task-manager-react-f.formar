@@ -52,7 +52,7 @@ export const FormProject = () => {
 
   return (
     <form
-      className="form flex  flex-col flex-wrap items-center text-white h-60 p-10 my-20 "
+      className="form flex  flex-col flex-wrap items-center h-60 p-10 my-10 "
       onSubmit={handleSubmit}
     >
       <h1 className="w-full text-sky-600 text-center text-3xl">

@@ -15,13 +15,13 @@ export const ProtectedLayout = () => {
   return (
     <>
       {auth._id? (
-        <div>
+        <div className=" h-full ">
             <header>
               <Header />
             </header>
-          <div className="flex  align-middle ">
+          <div className="flex align-middle h-full ">
             <SideBar/>
-            <main className="flex justify-center align-middle ">
+            <main className="flex  flex-col align-middle w-full">
               <Outlet />
             </main>
           </div>

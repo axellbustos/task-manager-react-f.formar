@@ -10,7 +10,7 @@ export const Projects = () => {
 
   return (
     <div >
-      <h1 className='text-white'>Proyectos</h1>
+      <h1 className=' text-xl p-2'>Proyectos</h1>
       <div className='text-white'>
         { 
         loading ? <p>Cargando ...</p> :

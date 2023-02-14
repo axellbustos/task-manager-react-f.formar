@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+body{
+    min-height: 100vh;
+}
+/* home */
 .circle{
     display: flex;
     justify-content: center;
@@ -13,6 +22,7 @@
     border-radius: 50%;
     margin: 25px;
 }
+/*form */
 .form{
     border: rgb(2, 132, 199) 3px solid;
     height: auto;
@@ -38,5 +48,15 @@
     padding: 15px;
     border-radius: 30px;
     border: #0283c7 2px solid;
+    
+}
+/* sideBar */
+.sideBar{
+    
+}
+.projectDetail div{
+    display: flex;
+    
+    font-size: 1.3rem;
     
 }

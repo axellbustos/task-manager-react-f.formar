@@ -9,7 +9,7 @@ export const Header = () => {
       <Container className="flex !justify-start ">
         <Navbar.Brand href="/" className="text-white">Proyects manager</Navbar.Brand>
       </Container>
-      <Link to={'/projects'}>Proyectos</Link>
+      
     </Navbar>
   )
 }

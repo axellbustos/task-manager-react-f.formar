@@ -23,7 +23,7 @@ export const Home = () => {
           </svg>
         </div>
         </Link>
-        <p className="text-white text-center">Tareas</p>
+        <p className=" text-center">Tareas</p>
       </div>
       <div>
         <div className="circle">
@@ -46,7 +46,7 @@ export const Home = () => {
             <line x1="9" y1="15" x2="13" y2="15" />
           </svg>
         </div>
-        <p className="text-white text-center">Notas</p>
+        <p className=" text-center">Notas</p>
       </div>
       <div>
         <div className="circle">
@@ -71,7 +71,7 @@ export const Home = () => {
             <line x1="12" y1="15" x2="12" y2="18" />
           </svg>
         </div>
-        <p className="text-white text-center">Calendario</p>
+        <p className=" text-center">Calendario</p>
       </div>
       <div>
         <div className="circle">
@@ -92,7 +92,7 @@ export const Home = () => {
             <path d="M6.293 15.293l-2.586 -2.586a1 1 0 0 1 0 -1.414l7.586 -7.586a1 1 0 0 1 1.414 0l2.586 2.586a1 1 0 0 1 0 1.414l-7.586 7.586a1 1 0 0 1 -1.414 0z" />
           </svg>
         </div>
-        <p className="text-white text-center">...</p>
+        <p className=" text-center">...</p>
       </div>
     </div>
   );

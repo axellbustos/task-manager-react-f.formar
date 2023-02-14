@@ -18,75 +18,77 @@ export const Project = () => {
       {loading ? (
         <p>Cargando ...</p>
       ) : (
-        <div className="text-white">
-          <div>
-            <h1>{name}</h1>
-            <Link to={`/projects/editProject/${_id}`}>
+        <div className="projectDetail ">
+          <div className="border rounded-md p-2 m-2 flex justify-between">
+            <h1 >{name}</h1>
+            <div>
+               <p>Editar</p>
+            <Link to={`/projects/editProject/${_id}`} >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-list-details"
-                width="100"
-                height="100"
+                class="icon icon-tabler icon-tabler-edit"
+                width="50"
+                height="50"
                 viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke="#000000"
                 fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M13 5h8" />
-                <path d="M13 9h5" />
-                <path d="M13 15h8" />
-                <path d="M13 19h5" />
-                <rect x="3" y="4" width="6" height="6" rx="1" />
-                <rect x="3" y="14" width="6" height="6" rx="1" />
+                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                <line x1="16" y1="5" x2="19" y2="8" />
               </svg>
             </Link>
-            <p>Editar</p>
+            </div>
+           
           </div>
-          <div>
+          <div className="border rounded-md p-2 m-2 flex justify-between">
             <p>Tareas del proyecto</p>
             <div
             /* onClick={} */
             >
+              <p>Nueva tarea</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-check"
-                width="100"
-                height="100"
+                class="icon icon-tabler icon-tabler-check"
+                width="50"
+                height="50"
                 viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke="#000000"
                 fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12l5 5l10 -10" />
               </svg>
-              <p>Nueva tarea</p>
             </div>
           </div>
           {[1, 2].map((task) => {
             <Task />;
           })}
-          <div>
+          <div className="border rounded-md p-2 m-2 flex justify-between">
             <p>Colaboradores</p>
-            <button
+            <div>
+              <button
             /* onClick={}  */
-            >
-              <svg
+            ><p>Agregar colaborador</p>
+            </button>
+            <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-users"
-                width="100"
-                height="100"
+                class="icon icon-tabler icon-tabler-users"
+                width="50"
+                height="50"
                 viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke="#000000"
                 fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <circle cx="9" cy="7" r="4" />
@@ -94,8 +96,8 @@ export const Project = () => {
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
               </svg>
-              <p>Agregar colaborador</p>
-            </button>
+            </div>
+            
           </div>
           {[1, 2].map((collaborator) => {
             <Collaborator />;
